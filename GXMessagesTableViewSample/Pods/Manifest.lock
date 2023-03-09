@@ -1,0 +1,28 @@
+PODS:
+  - GXCategories (1.0.5)
+  - GXRefresh (1.1.2)
+  - Reusable (4.1.2):
+    - Reusable/Storyboard (= 4.1.2)
+    - Reusable/View (= 4.1.2)
+  - Reusable/Storyboard (4.1.2)
+  - Reusable/View (4.1.2)
+
+DEPENDENCIES:
+  - GXCategories
+  - GXRefresh
+  - Reusable
+
+SPEC REPOS:
+  trunk:
+    - GXCategories
+    - GXRefresh
+    - Reusable
+
+SPEC CHECKSUMS:
+  GXCategories: 911f8094403c17a8dd2c4f6a1fb87cfc45d39a96
+  GXRefresh: d8c64ca667f1daad0f332cd6066023714fc0da6d
+  Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
+
+PODFILE CHECKSUM: 6b6aad338a628d65269ec681a5414947727d8533
+
+COCOAPODS: 1.11.3

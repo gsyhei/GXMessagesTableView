@@ -1,0 +1,6 @@
+framework module GXCategories {
+  umbrella header "GXCategories-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-GXMessagesTableViewSample/Pods-GXMessagesTableViewSample-frameworks.sh
+${BUILT_PRODUCTS_DIR}/GXCategories/GXCategories.framework
+${BUILT_PRODUCTS_DIR}/GXRefresh/GXRefresh.framework
+${BUILT_PRODUCTS_DIR}/Reusable/Reusable.framework

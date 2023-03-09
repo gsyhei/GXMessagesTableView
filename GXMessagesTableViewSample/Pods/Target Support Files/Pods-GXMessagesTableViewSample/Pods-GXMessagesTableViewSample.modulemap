@@ -1,0 +1,6 @@
+framework module Pods_GXMessagesTableViewSample {
+  umbrella header "Pods-GXMessagesTableViewSample-umbrella.h"
+
+  export *
+  module * { export * }
+}

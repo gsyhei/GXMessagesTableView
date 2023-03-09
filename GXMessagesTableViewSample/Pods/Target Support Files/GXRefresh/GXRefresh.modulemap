@@ -1,0 +1,6 @@
+framework module GXRefresh {
+  umbrella header "GXRefresh-umbrella.h"
+
+  export *
+  module * { export * }
+}
