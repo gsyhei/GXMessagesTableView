@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name          = "GXMessagesTableView"
-  s.version       = "1.1.3"
+  s.version       = "1.0.0"
   s.swift_version = "4.2"
   s.summary       = "一个实现Telegram会话头像底部悬停(左右头像都可以悬停)以及header悬停显示效果，并且实现下滑加载的TableView。"
   s.homepage      = "https://github.com/gsyhei/GXMessagesTableView"
