@@ -14,6 +14,8 @@ public protocol GXMessagesTableViewDatalist: NSObjectProtocol {
 
 public class GXMessagesTableView: GXMessagesLoadTableView {
     public weak var datalist: GXMessagesTableViewDatalist?
+    public var topDifference: CGFloat = 5.0
+    
     private var hoverAvatar: UIView?
     private var hoverAvatarData: GXMessagesAvatarDataProtocol?
     private var lastHiddenIndexPath: IndexPath?
@@ -97,19 +99,19 @@ private extension GXMessagesTableView {
         }
         
         guard let avatar = self.hoverAvatar else { return }
-        let avatarHeight = lastAvatarCell.height - lastAvatarCell.avatar.top
+        let avatarHeight = lastAvatarCell.height - lastAvatarCell.avatar.top + self.topDifference
         let cellRect = self.rectForRow(at: lastAvatarIndexPath)
         let cellTop = cellRect.minY - self.contentOffset.y
         let cellBottom = cellRect.maxY - self.contentOffset.y
         let tDifference = self.height - cellTop
         let bDifference = self.height - cellBottom
 
-        if tDifference >= lastAvatarCell.avatar.height {
+        if tDifference >= avatarHeight {
             if bDifference <= 0 {
-                avatar.top = self.height - avatarHeight + self.contentOffset.y
+                avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
             }
             else {
-                avatar.top = cellRect.maxY - avatarHeight
+                avatar.top = cellRect.maxY - avatarHeight + self.topDifference
             }
         }
         else {
@@ -118,10 +120,10 @@ private extension GXMessagesTableView {
             if self.cellForRow(at: preIndexPath) is GXMessagesAvatarCellProtocol &&
                 (preAvatarData.gx_messageContinuousStatus != .end && preAvatarData.gx_messageContinuousStatus != .beginAndEnd) &&
                 lastAvatarIndexPath.section == preIndexPath.section {
-                avatar.top = self.height - avatarHeight + self.contentOffset.y
+                avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
             }
             else {
-                avatar.top = cellRect.minY
+                avatar.top = cellRect.minY + self.topDifference
             }
         }
     }
