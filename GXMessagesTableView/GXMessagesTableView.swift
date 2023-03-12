@@ -38,6 +38,26 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
             }
         }
     }
+    
+    public func gx_scrollBeginDragging() {
+        guard let fristIndexPath = self.indexPathsForVisibleRows?.first else { return }
+        
+        let header = self.headerView(forSection: fristIndexPath.section)
+        self.gx_scrollHeaderAnimate(header: header, hidden: false)
+    }
+    
+    public func gx_scrollEndDragging() {
+        guard let fristIndexPath = self.indexPathsForVisibleRows?.first else { return }
+        
+        let headerRect = self.rectForHeader(inSection: fristIndexPath.section)
+        let headerTop = self.contentOffset.y + self.adjustedContentInset.top - headerRect.origin.y
+        
+        if fristIndexPath.row > 0 || headerTop > headerRect.height*0.8 {
+            let header = self.headerView(forSection: fristIndexPath.section)
+            self.gx_scrollHeaderAnimate(header: header, hidden: true)
+        }
+    }
+    
 }
 
 private extension GXMessagesTableView {
@@ -47,10 +67,10 @@ private extension GXMessagesTableView {
         let lastCell = self.visibleCells.last(where: {$0 is GXMessagesAvatarCellProtocol})
         guard let lastAvatarCell = lastCell as? GXMessagesAvatarCellProtocol else { return }
         guard let lastAvatarIndexPath = self.indexPath(for: lastAvatarCell) else { return }
-
+        
         let previousIndexPath = self.indexPathsForVisibleRows?.last(where: {$0 < lastAvatarIndexPath})
         let lastAvatarData = dataDelegate.gx_tableView(self, avatarDataForRowAt: lastAvatarIndexPath)
-
+        
         if self.hoverAvatarData?.gx_senderId != lastAvatarData.gx_senderId {
             self.gx_resetPreEndAvatar()
             let avatar = lastAvatarCell.createAvatarView()
@@ -105,7 +125,7 @@ private extension GXMessagesTableView {
         let cellBottom = cellRect.maxY - self.contentOffset.y
         let tDifference = self.height - cellTop
         let bDifference = self.height - cellBottom
-
+        
         if tDifference >= avatarHeight {
             if bDifference <= 0 {
                 avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
@@ -136,6 +156,13 @@ private extension GXMessagesTableView {
             if preEndAvatarData?.gx_messageContinuousStatus == .end || preEndAvatarData?.gx_messageContinuousStatus == .beginAndEnd {
                 preEndCell.avatar.isHidden = false
             }
+        }
+    }
+    
+    func gx_scrollHeaderAnimate(header: UIView?, hidden: Bool) {
+        let alpha = hidden ? 0.0 : 1.0
+        UIView.animate(withDuration: 0.25) {
+            header?.alpha = alpha
         }
     }
     
