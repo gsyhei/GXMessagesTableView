@@ -81,8 +81,8 @@ class ViewController: UIViewController {
             }
             data.messageStatus = (column%4 > 1) ? .sending : .receiving
             if data.messageStatus == .sending {
-                data.avatarID = "111111111111"
-                data.avatarText = "发送"
+                data.avatarID = "\(column)"
+                data.avatarText = "发\(column)"
             }
             else {
                 data.avatarID = "\(column)"
