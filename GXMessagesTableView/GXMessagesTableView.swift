@@ -15,7 +15,11 @@ public protocol GXMessagesTableViewDatalist: NSObjectProtocol {
 public class GXMessagesTableView: GXMessagesLoadTableView {
     public weak var datalist: GXMessagesTableViewDatalist?
     public var topDifference: CGFloat = 5.0
+    public var avatarToCellIndexPath: IndexPath? {
+        return self.toCellIndexPath
+    }
     
+    private var toCellIndexPath: IndexPath?
     private var hoverAvatar: UIView?
     private var hoverAvatarData: GXMessagesAvatarDataProtocol?
     private var hoverAvatarIndexPath: IndexPath?
@@ -129,6 +133,7 @@ private extension GXMessagesTableView {
         let tDifference = self.height - cellTop
         let bDifference = self.height - cellBottom
         
+        self.toCellIndexPath = indexPath
         if tDifference >= avatarHeight {
             if bDifference <= 0 {
                 avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
@@ -145,6 +150,9 @@ private extension GXMessagesTableView {
                 preIndexPath.section == indexPath.section
             {
                 avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
+                if avatar.frame.midY - self.contentOffset.y < cellTop {
+                    self.toCellIndexPath = preIndexPath
+                }
             }
             else {
                 avatar.top = cellRect.minY + self.topDifference

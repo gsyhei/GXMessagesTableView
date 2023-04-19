@@ -32,19 +32,19 @@ public enum GXMessageStatus : Int {
 
 /// 头像视图接口
 public protocol GXMessagesAvatarViewProtocol {
-
+    /// 悬浮头像视图
     var avatar: UIView { get }
-        
+    /// 悬浮头像视图创建方法
     func createAvatarView() -> UIView
 }
 
 /// 头像数据接口
 public protocol GXMessagesAvatarDataProtocol {
-    
+    /// 消息连续状态
     var gx_messageContinuousStatus: GXMessageContinuousStatus { get }
-    
+    /// 消息状态（发送/接收）
     var gx_messageStatus: GXMessageStatus { get }
-    
+    /// 发送者id（用于区分头像）
     var gx_senderId: String { get }
     
 }
