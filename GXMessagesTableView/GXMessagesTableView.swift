@@ -18,6 +18,9 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
     public var avatarToCellIndexPath: IndexPath? {
         return self.toCellIndexPath
     }
+    public var hoverToCellAvatar: UIView? {
+        return self.hoverAvatar
+    }
     
     private var toCellIndexPath: IndexPath?
     private var hoverAvatar: UIView?
