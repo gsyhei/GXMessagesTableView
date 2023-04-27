@@ -103,7 +103,7 @@ private extension GXMessagesTableView {
         guard let preEndCell = self.cellForRow(at: preEndIndexPath) as? GXMessagesAvatarCellProtocol else { return }
         
         let preEndAvatarData = self.datalist?.gx_tableView(self, avatarDataForRowAt: preEndIndexPath)
-        if preEndAvatarData?.gx_messageContinuousStatus == .end || preEndAvatarData?.gx_messageContinuousStatus == .beginAndEnd {
+        if preEndAvatarData?.gx_continuousEnd ?? false {
             preEndCell.avatar.isHidden = false
         }
     }
@@ -123,7 +123,7 @@ private extension GXMessagesTableView {
     }
     
     func gx_setPointLastHoverAvatar(cell: GXMessagesAvatarCellProtocol, indexPath: IndexPath, data: GXMessagesAvatarDataProtocol) {
-        if data.gx_messageContinuousStatus == .end || data.gx_messageContinuousStatus == .beginAndEnd {
+        if data.gx_continuousEnd {
             cell.avatar.isHidden = true
             self.lastHiddenIndexPath = indexPath
         }
@@ -148,9 +148,9 @@ private extension GXMessagesTableView {
         else {
             guard let preIndexPath = self.indexPathsForVisibleRows?.last(where: {$0 < indexPath}) else { return }
             let preAvatarData = self.datalist?.gx_tableView(self, avatarDataForRowAt: preIndexPath)
-            if self.cellForRow(at: preIndexPath) is GXMessagesAvatarCellProtocol &&
-                (preAvatarData?.gx_messageContinuousStatus != .end && preAvatarData?.gx_messageContinuousStatus != .beginAndEnd) &&
-                preIndexPath.section == indexPath.section
+            if self.cellForRow(at: preIndexPath) is GXMessagesAvatarCellProtocol
+                && !(preAvatarData?.gx_continuousEnd ?? false)
+                && preIndexPath.section == indexPath.section
             {
                 avatar.top = self.height - avatarHeight + self.contentOffset.y + self.topDifference
                 if avatar.frame.midY - self.contentOffset.y < cellTop {

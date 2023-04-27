@@ -10,18 +10,6 @@ import UIKit
 /// 头像cell接口
 public typealias GXMessagesAvatarCellProtocol = UITableViewCell & GXMessagesAvatarViewProtocol
 
-/// 消息连续状态
-public enum GXMessageContinuousStatus: Int {
-    /// 开始
-    case begin       = 0
-    /// 持续中
-    case ongoing     = 1
-    /// 结束
-    case end         = 2
-    /// 开始And结束
-    case beginAndEnd = 3
-}
-
 /// 消息状态
 public enum GXMessageStatus : Int {
     /// 发送
@@ -40,11 +28,12 @@ public protocol GXMessagesAvatarViewProtocol {
 
 /// 头像数据接口
 public protocol GXMessagesAvatarDataProtocol {
-    /// 消息连续状态
-    var gx_messageContinuousStatus: GXMessageContinuousStatus { get }
+    /// 消息连续状态开始
+    var gx_continuousBegin: Bool { set get }
+    /// 消息连续状态结束
+    var gx_continuousEnd: Bool { set get }
     /// 消息状态（发送/接收）
     var gx_messageStatus: GXMessageStatus { get }
     /// 发送者id（用于区分头像）
     var gx_senderId: String { get }
-    
 }

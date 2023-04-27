@@ -10,24 +10,40 @@ import Reusable
 
 public struct TestData: GXMessagesAvatarDataProtocol {
     var avatarID: String = ""
-    var messageContinuousStatus: GXMessageContinuousStatus = .begin
+    var continuousBegin: Bool = true
+    var continuousEnd: Bool = false
     var messageStatus: GXMessageStatus = .sending
     var avatarText: String = ""
     var text: String = ""
     
     //MARK: - GXMessagesAvatarDataSource
     
-    public var gx_messageContinuousStatus: GXMessageContinuousStatus {
-        return self.messageContinuousStatus
-    }
-    
     public var gx_messageStatus: GXMessageStatus {
         return self.messageStatus
+    }
+    
+    public var gx_continuousBegin: Bool {
+        set {
+            self.continuousBegin = newValue
+        }
+        get {
+            return self.continuousBegin
+        }
+    }
+    
+    public var gx_continuousEnd: Bool {
+        set {
+            self.continuousEnd = newValue
+        }
+        get {
+            return self.continuousEnd
+        }
     }
     
     public var gx_senderId: String {
         return self.avatarID
     }
+    
 }
 
 class ViewController: UIViewController {
@@ -73,11 +89,14 @@ class ViewController: UIViewController {
             var data = TestData()
             data.text = "index\(index)"
             if cuindex == 0 {
-                data.messageContinuousStatus = .begin
+                data.gx_continuousBegin = true
+                data.gx_continuousEnd = false
             } else if cuindex == 3 {
-                data.messageContinuousStatus = .end
+                data.gx_continuousBegin = false
+                data.gx_continuousEnd = true
             } else {
-                data.messageContinuousStatus = .ongoing
+                data.gx_continuousBegin = false
+                data.gx_continuousEnd = false
             }
             data.messageStatus = (column%4 > 1) ? .sending : .receiving
             if data.messageStatus == .sending {
