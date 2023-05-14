@@ -22,6 +22,7 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
         return self.hoverAvatar
     }
     
+    private var reusableAvatars: [UIView] = []
     private var toCellIndexPath: IndexPath?
     private var hoverAvatar: UIView?
     private var hoverAvatarData: GXMessagesAvatarDataProtocol?
@@ -97,6 +98,9 @@ private extension GXMessagesTableView {
     }
     
     func gx_resetPreEndAvatar() {
+        if let avatar = self.hoverAvatar {
+            self.reusableAvatars.append(avatar)
+        }
         self.hoverAvatar?.removeFromSuperview()
         
         guard let preEndIndexPath = self.lastHiddenIndexPath else { return }
@@ -111,7 +115,7 @@ private extension GXMessagesTableView {
     func gx_addLastHoverAvatar(cell: GXMessagesAvatarCellProtocol, indexPath: IndexPath, data: GXMessagesAvatarDataProtocol) {
         self.gx_resetPreEndAvatar()
         
-        let avatar = cell.createAvatarView()
+        let avatar = self.dequeueReusableAvatar(cell)
         self.datalist?.gx_tableView(self, changeForRowAt: indexPath, avatar: avatar)
         let avatarHeight = cell.height - cell.avatar.top
         let avatarOrigin = CGPoint(x: cell.avatar.left, y: cell.bottom - avatarHeight)
@@ -161,6 +165,14 @@ private extension GXMessagesTableView {
                 avatar.top = cellRect.minY + self.topDifference
             }
         }
+    }
+    
+    func dequeueReusableAvatar(_ cell: GXMessagesAvatarCellProtocol) -> UIView {
+        if let avatar = self.reusableAvatars.first {
+            self.reusableAvatars.removeFirst()
+            return avatar
+        }
+        return cell.createAvatarView()
     }
     
     func gx_scrollHeaderAnimate(header: UIView?, hidden: Bool) {
