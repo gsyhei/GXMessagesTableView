@@ -8,11 +8,19 @@
 import UIKit
 import Reusable
 
+/// 消息状态
+public enum GXMessageStatus : Int {
+    /// 发送
+    case send    = 0
+    /// 接收
+    case receive = 1
+}
+
 public struct TestData: GXMessagesAvatarDataProtocol {
     var avatarID: String = ""
     var continuousBegin: Bool = true
     var continuousEnd: Bool = false
-    var messageStatus: GXMessageStatus = .sending
+    var messageStatus: GXMessageStatus = .send
     var avatarText: String = ""
     var text: String = ""
     
@@ -98,8 +106,8 @@ class ViewController: UIViewController {
                 data.gx_continuousBegin = false
                 data.gx_continuousEnd = false
             }
-            data.messageStatus = (column%4 > 1) ? .sending : .receiving
-            if data.messageStatus == .sending {
+            data.messageStatus = (column%4 > 1) ? .send : .receive
+            if data.messageStatus == .send {
                 data.avatarID = "\(column)"
                 data.avatarText = "发\(column)"
             }

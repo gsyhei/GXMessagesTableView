@@ -59,7 +59,7 @@ class GXMessagesTestCell: GXMessagesAvatarCellProtocol, Reusable {
     func bindCell(data: TestData) {
         self.avatarButton.setTitle(data.avatarText, for: .normal)
         self.avatarButton.isHidden = !data.gx_continuousEnd
-        if data.messageStatus == .receiving {
+        if data.messageStatus == .receive {
             let size: CGFloat = 60.0
             let rect = CGRect(x: 0, y: self.contentView.height - size, width: size, height: size)
             self.avatarButton.frame = rect
