@@ -8,7 +8,7 @@
 import UIKit
 
 /// 头像cell接口
-public typealias GXMessagesAvatarCellProtocol = UITableViewCell & GXMessagesAvatarViewProtocol
+public typealias GXMessagesAvatarCellProtocol = GXMessagesAvatarCell & GXMessagesAvatarViewProtocol
 
 /// 头像视图接口
 public protocol GXMessagesAvatarViewProtocol {

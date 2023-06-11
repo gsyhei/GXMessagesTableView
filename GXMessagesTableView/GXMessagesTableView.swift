@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reusable
 
 public protocol GXMessagesTableViewDatalist: NSObjectProtocol {
     func gx_tableView(_ tableView: UITableView, avatarDataForRowAt indexPath: IndexPath) -> GXMessagesAvatarDataProtocol
@@ -13,6 +14,11 @@ public protocol GXMessagesTableViewDatalist: NSObjectProtocol {
 }
 
 public class GXMessagesTableView: GXMessagesLoadTableView {
+    public static let GXEditNotification: NSNotification.Name = NSNotification.Name(rawValue: "audioPlayNotification")
+    public static let GXEditIsEditingKey: String = "GXEditIsEditingKey"
+    public static let GXEditIsAnimatedKey: String = "GXEditIsAnimatedKey"
+    public static let GXEditAnimateDuration: TimeInterval = 0.3
+    
     public weak var datalist: GXMessagesTableViewDatalist?
     public var topDifference: CGFloat = 5.0
     public var avatarToCellIndexPath: IndexPath? {
@@ -29,6 +35,9 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
     private var hoverAvatarIndexPath: IndexPath?
     private var lastHiddenIndexPath: IndexPath?
     
+    private var gx_isEditing: Bool = false
+    private var gx_editingAnimated: Bool = false
+
     public override init(frame: CGRect, style: UITableView.Style) {
         super .init(frame: frame, style: style)
         self.addObserver(self, forKeyPath: "contentOffset", options: [.new], context: nil)
@@ -46,6 +55,24 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
                 }
             }
         }
+    }
+    
+    public func gx_setEditing(_ editing: Bool, animated: Bool) {
+        self.gx_isEditing = editing
+        let notificationObject = [GXMessagesTableView.GXEditIsEditingKey: editing, GXMessagesTableView.GXEditIsAnimatedKey: animated]
+        NotificationCenter.default.post(name: GXMessagesTableView.GXEditNotification, object: notificationObject)
+        self.gx_editingAnimated = animated
+        self.gx_changeContentOffset(self.contentOffset)
+        self.gx_editingAnimated = false
+    }
+    
+    public func gx_dequeueReusableCell<T: UITableViewCell>(for indexPath: IndexPath, cellType: T.Type = T.self) -> T
+      where T: Reusable {
+        let cell = self.dequeueReusableCell(for: indexPath, cellType: cellType)
+          if let avatarCell = cell as? GXMessagesAvatarCellProtocol {
+              avatarCell.gx_setEditing(self.gx_isEditing, animated: false)
+          }
+        return cell
     }
     
     public func gx_scrollBeginDragging() {
@@ -66,7 +93,7 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
             self.gx_scrollHeaderAnimate(header: header, hidden: true)
         }
     }
-    
+
 }
 
 private extension GXMessagesTableView {
@@ -115,9 +142,10 @@ private extension GXMessagesTableView {
     func gx_addLastHoverAvatar(cell: GXMessagesAvatarCellProtocol, indexPath: IndexPath, data: GXMessagesAvatarDataProtocol) {
         self.gx_resetPreEndAvatar()
         
-        let avatar = self.dequeueReusableAvatar(cell)
+        let avatar = self.gx_dequeueReusableAvatar(cell)
         self.datalist?.gx_tableView(self, changeForRowAt: indexPath, avatar: avatar)
         let avatarHeight = cell.height - cell.avatar.top
+        let avatarLeft = cell.avatar.left + cell.left + cell.contentView.left
         let avatarOrigin = CGPoint(x: cell.avatar.left, y: cell.bottom - avatarHeight)
         avatar.frame = CGRect(origin: avatarOrigin, size: cell.avatar.size)
         self.addSubview(avatar)
@@ -133,6 +161,16 @@ private extension GXMessagesTableView {
         }
         
         guard let avatar = self.hoverAvatar else { return }
+        let avatarLeft = cell.avatar.left + cell.left + cell.contentView.left
+        if  avatarLeft != avatar.left {
+            if self.gx_isEditing {
+                UIView.animate(withDuration: GXMessagesTableView.GXEditAnimateDuration) {
+                    avatar.left = avatarLeft
+                }
+            } else {
+                avatar.left = avatarLeft
+            }
+        }
         let avatarHeight = cell.height - cell.avatar.top + self.topDifference
         let cellRect = self.rectForRow(at: indexPath)
         let cellTop = cellRect.minY - self.contentOffset.y
@@ -167,7 +205,7 @@ private extension GXMessagesTableView {
         }
     }
     
-    func dequeueReusableAvatar(_ cell: GXMessagesAvatarCellProtocol) -> UIView {
+    func gx_dequeueReusableAvatar(_ cell: GXMessagesAvatarCellProtocol) -> UIView {
         if let avatar = self.reusableAvatars.first {
             self.reusableAvatars.removeFirst()
             return avatar

@@ -22,5 +22,6 @@ Pod::Spec.new do |s|
   s.frameworks    = "Foundation","UIKit"
   s.dependency  'GXCategories'
   s.dependency  'GXRefresh'
+  s.dependency  'Reusable'
 
 end
