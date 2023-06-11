@@ -119,16 +119,16 @@
 		694A1E117A5007127BC65F8927761BFA /* GXRefreshGifFooter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GXRefreshGifFooter.swift; path = GXRefresh/GXRefreshGifFooter.swift; sourceTree = "<group>"; };
 		6A7CC1C388F40A5ACF1C25965F38353A /* GXCategories-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "GXCategories-Info.plist"; sourceTree = "<group>"; };
 		7050BA52299975F0131D18067BE5FD48 /* Pods-GXMessagesTableViewSample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GXMessagesTableViewSample-frameworks.sh"; sourceTree = "<group>"; };
-		71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GXCategories; path = GXCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GXCategories.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A654D0E29E453EF50C6763C04AF6DD3 /* StoryboardBased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryboardBased.swift; path = Sources/Storyboard/StoryboardBased.swift; sourceTree = "<group>"; };
 		7FC7DCB4D76D9021A0C60491EEC557A6 /* Reusable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reusable.swift; path = Sources/View/Reusable.swift; sourceTree = "<group>"; };
 		81D96A7864EB83F4305A7A6F71F079EF /* Reusable-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Reusable-dummy.m"; sourceTree = "<group>"; };
 		8240FBECEC74B7908441DD2530E57FCF /* GXCategories.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GXCategories.debug.xcconfig; sourceTree = "<group>"; };
 		88CFB2EE60E6A43A26AF6950D987390A /* Pods-GXMessagesTableViewSample */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-GXMessagesTableViewSample"; path = Pods_GXMessagesTableViewSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		944C22092267C1DCC2ABBDC3556EFF25 /* GXCategories.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GXCategories.modulemap; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E0F5B1630FE18AE822E4DB6852C4939 /* StoryboardSceneBased.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoryboardSceneBased.swift; path = Sources/Storyboard/StoryboardSceneBased.swift; sourceTree = "<group>"; };
-		A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Reusable; path = Reusable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Reusable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0ED6DA50A1B316742D3FBA9F656A967 /* UIImage+GXAdd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIImage+GXAdd.swift"; path = "GXCategories/UIImage+GXAdd.swift"; sourceTree = "<group>"; };
 		A13A1C55AB456C7B9467F06C176808F9 /* Data+GXAdd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Data+GXAdd.swift"; path = "GXCategories/Data+GXAdd.swift"; sourceTree = "<group>"; };
 		A1823EC6338817B7EAA7EBC934F03499 /* UIViewController+GXAdd.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+GXAdd.swift"; path = "GXCategories/UIViewController+GXAdd.swift"; sourceTree = "<group>"; };
@@ -228,7 +228,6 @@
 				4125F55333B3E76F86BC55E643FDE3FD /* Resources */,
 				D97C8446A1920AC56E621B691CC76F8D /* Support Files */,
 			);
-			name = GXRefresh;
 			path = GXRefresh;
 			sourceTree = "<group>";
 		};
@@ -264,7 +263,6 @@
 				A1823EC6338817B7EAA7EBC934F03499 /* UIViewController+GXAdd.swift */,
 				A1FDD62A10C190CD556AE02CE4266A78 /* Support Files */,
 			);
-			name = GXCategories;
 			path = GXCategories;
 			sourceTree = "<group>";
 		};
@@ -275,7 +273,6 @@
 				B30DAD59B65521358CCE42A83BA603C7 /* Support Files */,
 				F03A601892909AC8DBCE3BBFC0AEA183 /* View */,
 			);
-			name = Reusable;
 			path = Reusable;
 			sourceTree = "<group>";
 		};
@@ -391,10 +388,10 @@
 		EFE506A09DEE34461AEAFFA0008F5794 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories */,
+				71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories.framework */,
 				EEA31DBCF67116268B17870D7C5A27D6 /* GXRefresh */,
 				88CFB2EE60E6A43A26AF6950D987390A /* Pods-GXMessagesTableViewSample */,
-				A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable */,
+				A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -464,7 +461,7 @@
 			);
 			name = GXCategories;
 			productName = GXCategories;
-			productReference = 71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories */;
+			productReference = 71E3A4F8AAA39617D4E6E63EFDB69CC2 /* GXCategories.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		252AE1A55212D48910B11193FB03FCC0 /* Pods-GXMessagesTableViewSample */ = {
@@ -503,7 +500,7 @@
 			);
 			name = Reusable;
 			productName = Reusable;
-			productReference = A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable */;
+			productReference = A0ABA07B4D48354ED3F51C2D6AF5426B /* Reusable.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8DB72B409153ABAC5041F68DBE2A291C /* GXRefresh */ = {
@@ -695,7 +692,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Reusable/Reusable-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Reusable/Reusable-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -765,7 +762,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Reusable/Reusable-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Reusable/Reusable-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -799,7 +796,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1073,7 +1070,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GXCategories/GXCategories-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GXCategories/GXCategories-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

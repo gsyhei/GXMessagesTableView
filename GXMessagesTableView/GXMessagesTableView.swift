@@ -146,7 +146,7 @@ private extension GXMessagesTableView {
         self.datalist?.gx_tableView(self, changeForRowAt: indexPath, avatar: avatar)
         let avatarHeight = cell.height - cell.avatar.top
         let avatarLeft = cell.avatar.left + cell.left + cell.contentView.left
-        let avatarOrigin = CGPoint(x: cell.avatar.left, y: cell.bottom - avatarHeight)
+        let avatarOrigin = CGPoint(x: avatarLeft, y: cell.bottom - avatarHeight)
         avatar.frame = CGRect(origin: avatarOrigin, size: cell.avatar.size)
         self.addSubview(avatar)
         self.hoverAvatarData = data
@@ -162,7 +162,7 @@ private extension GXMessagesTableView {
         
         guard let avatar = self.hoverAvatar else { return }
         let avatarLeft = cell.avatar.left + cell.left + cell.contentView.left
-        if  avatarLeft != avatar.left {
+        if avatarLeft != avatar.left {
             if self.gx_isEditing {
                 UIView.animate(withDuration: GXMessagesTableView.GXEditAnimateDuration) {
                     avatar.left = avatarLeft
