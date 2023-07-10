@@ -58,8 +58,8 @@ class ViewController: UIViewController {
     
     private var list: [[TestData]] = []
     
-    private lazy var tableView: GXMessagesTableView = {
-        let tv = GXMessagesTableView(frame: self.view.bounds, style: .plain)
+    private lazy var tableView: GXMessagesHoverAvatarTableView = {
+        let tv = GXMessagesHoverAvatarTableView(frame: self.view.bounds, style: .plain)
         tv.dataSource = self
         tv.delegate = self
         tv.datalist = self
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
 
 }
 
-extension  ViewController: UITableViewDataSource, UITableViewDelegate, GXMessagesTableViewDatalist {
+extension  ViewController: UITableViewDataSource, UITableViewDelegate, GXMessagesHoverAvatarTableViewDatalist {
     
     func gx_tableView(_ tableView: UITableView, avatarDataForRowAt indexPath: IndexPath) -> GXMessagesAvatarDataProtocol {
         return self.list[indexPath.section][indexPath.row]
@@ -163,7 +163,7 @@ extension  ViewController: UITableViewDataSource, UITableViewDelegate, GXMessage
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let viewID = "ViewID"
-        var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "viewID")
+        var header = tableView.dequeueReusableHeaderFooterView(withIdentifier: viewID)
         if header == nil {
             header = UITableViewHeaderFooterView(reuseIdentifier: viewID)
         }

@@ -8,11 +8,11 @@
 import UIKit
 import Reusable
 
-public class GXMessagesAvatarCell: UITableViewCell, Reusable {
+open class GXMessagesAvatarCell: UITableViewCell, Reusable {
 
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        NotificationCenter.default.addObserver(self, selector: #selector(editNotification), name: GXMessagesTableView.GXEditNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(editNotification), name: GXMessagesHoverAvatarTableView.GXEditNotification, object: nil)
     }
     
     public required init?(coder: NSCoder) {
@@ -21,8 +21,8 @@ public class GXMessagesAvatarCell: UITableViewCell, Reusable {
     
     @objc private func editNotification(notification: NSNotification) {
         if let object = notification.object as? [String: Bool] {
-            let editing = object[GXMessagesTableView.GXEditIsEditingKey] ?? false
-            let animated = object[GXMessagesTableView.GXEditIsEditingKey] ?? false
+            let editing = object[GXMessagesHoverAvatarTableView.GXEditIsEditingKey] ?? false
+            let animated = object[GXMessagesHoverAvatarTableView.GXEditIsEditingKey] ?? false
             self.gx_setEditing(editing, animated: animated)
         }
     }

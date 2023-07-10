@@ -8,18 +8,18 @@
 import UIKit
 import Reusable
 
-public protocol GXMessagesTableViewDatalist: NSObjectProtocol {
+public protocol GXMessagesHoverAvatarTableViewDatalist: NSObjectProtocol {
     func gx_tableView(_ tableView: UITableView, avatarDataForRowAt indexPath: IndexPath) -> GXMessagesAvatarDataProtocol
     func gx_tableView(_ tableView: UITableView, changeForRowAt indexPath: IndexPath, avatar: UIView)
 }
 
-public class GXMessagesTableView: GXMessagesLoadTableView {
+public class GXMessagesHoverAvatarTableView: GXMessagesLoadTableView {
     public static let GXEditNotification: NSNotification.Name = NSNotification.Name(rawValue: "audioPlayNotification")
     public static let GXEditIsEditingKey: String = "GXEditIsEditingKey"
     public static let GXEditIsAnimatedKey: String = "GXEditIsAnimatedKey"
     public static let GXEditAnimateDuration: TimeInterval = 0.3
     
-    public weak var datalist: GXMessagesTableViewDatalist?
+    public weak var datalist: GXMessagesHoverAvatarTableViewDatalist?
     public var topDifference: CGFloat = 5.0
     public var avatarToCellIndexPath: IndexPath? {
         return self.toCellIndexPath
@@ -59,8 +59,8 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
     
     public func gx_setEditing(_ editing: Bool, animated: Bool) {
         self.gx_isEditing = editing
-        let notificationObject = [GXMessagesTableView.GXEditIsEditingKey: editing, GXMessagesTableView.GXEditIsAnimatedKey: animated]
-        NotificationCenter.default.post(name: GXMessagesTableView.GXEditNotification, object: notificationObject)
+        let notificationObject = [GXMessagesHoverAvatarTableView.GXEditIsEditingKey: editing, GXMessagesHoverAvatarTableView.GXEditIsAnimatedKey: animated]
+        NotificationCenter.default.post(name: GXMessagesHoverAvatarTableView.GXEditNotification, object: notificationObject)
         self.gx_editingAnimated = animated
         self.gx_changeContentOffset(self.contentOffset)
         self.gx_editingAnimated = false
@@ -96,7 +96,7 @@ public class GXMessagesTableView: GXMessagesLoadTableView {
 
 }
 
-private extension GXMessagesTableView {
+private extension GXMessagesHoverAvatarTableView {
     
     func gx_changeContentOffset(_ offset: CGPoint) {
         guard let dataDelegate = self.datalist else { return }
@@ -164,7 +164,7 @@ private extension GXMessagesTableView {
         let avatarLeft = cell.avatar.left + cell.left + cell.contentView.left
         if avatarLeft != avatar.left {
             if self.gx_isEditing {
-                UIView.animate(withDuration: GXMessagesTableView.GXEditAnimateDuration) {
+                UIView.animate(withDuration: GXMessagesHoverAvatarTableView.GXEditAnimateDuration) {
                     avatar.left = avatarLeft
                 }
             } else {

@@ -19,7 +19,7 @@
 		9623D8A129B9AD1B00BE0BFB /* GXMessagesTableViewSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8A029B9AD1B00BE0BFB /* GXMessagesTableViewSampleUITestsLaunchTests.swift */; };
 		9623D8B229B9AE2D00BE0BFB /* GXMessagesLoadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8AE29B9AE2D00BE0BFB /* GXMessagesLoadHeader.swift */; };
 		9623D8B329B9AE2D00BE0BFB /* GXMessagesAvatarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8AF29B9AE2D00BE0BFB /* GXMessagesAvatarProtocol.swift */; };
-		9623D8B429B9AE2D00BE0BFB /* GXMessagesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8B029B9AE2D00BE0BFB /* GXMessagesTableView.swift */; };
+		9623D8B429B9AE2D00BE0BFB /* GXMessagesHoverAvatarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8B029B9AE2D00BE0BFB /* GXMessagesHoverAvatarTableView.swift */; };
 		9623D8B529B9AE2D00BE0BFB /* GXMessagesLoadTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8B129B9AE2D00BE0BFB /* GXMessagesLoadTableView.swift */; };
 		9623D8B729B9AE5400BE0BFB /* GXMessagesTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8B629B9AE5400BE0BFB /* GXMessagesTestCell.swift */; };
 		96A1FE362A358C6C0084BC8D /* GXMessagesAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A1FE352A358C6C0084BC8D /* GXMessagesAvatarCell.swift */; };
@@ -61,7 +61,7 @@
 		9623D8A029B9AD1B00BE0BFB /* GXMessagesTableViewSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMessagesTableViewSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9623D8AE29B9AE2D00BE0BFB /* GXMessagesLoadHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadHeader.swift; sourceTree = "<group>"; };
 		9623D8AF29B9AE2D00BE0BFB /* GXMessagesAvatarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesAvatarProtocol.swift; sourceTree = "<group>"; };
-		9623D8B029B9AE2D00BE0BFB /* GXMessagesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesTableView.swift; sourceTree = "<group>"; };
+		9623D8B029B9AE2D00BE0BFB /* GXMessagesHoverAvatarTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesHoverAvatarTableView.swift; sourceTree = "<group>"; };
 		9623D8B129B9AE2D00BE0BFB /* GXMessagesLoadTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadTableView.swift; sourceTree = "<group>"; };
 		9623D8B629B9AE5400BE0BFB /* GXMessagesTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesTestCell.swift; sourceTree = SOURCE_ROOT; };
 		96A1FE352A358C6C0084BC8D /* GXMessagesAvatarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GXMessagesAvatarCell.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 				96A1FE352A358C6C0084BC8D /* GXMessagesAvatarCell.swift */,
 				9623D8AE29B9AE2D00BE0BFB /* GXMessagesLoadHeader.swift */,
 				9623D8B129B9AE2D00BE0BFB /* GXMessagesLoadTableView.swift */,
-				9623D8B029B9AE2D00BE0BFB /* GXMessagesTableView.swift */,
+				9623D8B029B9AE2D00BE0BFB /* GXMessagesHoverAvatarTableView.swift */,
 			);
 			name = GXMessagesTableView;
 			path = ../../GXMessagesTableView;
@@ -357,7 +357,7 @@
 				9623D88229B9AD1900BE0BFB /* ViewController.swift in Sources */,
 				9623D8B729B9AE5400BE0BFB /* GXMessagesTestCell.swift in Sources */,
 				9623D8B529B9AE2D00BE0BFB /* GXMessagesLoadTableView.swift in Sources */,
-				9623D8B429B9AE2D00BE0BFB /* GXMessagesTableView.swift in Sources */,
+				9623D8B429B9AE2D00BE0BFB /* GXMessagesHoverAvatarTableView.swift in Sources */,
 				9623D8B229B9AE2D00BE0BFB /* GXMessagesLoadHeader.swift in Sources */,
 				9623D87E29B9AD1900BE0BFB /* AppDelegate.swift in Sources */,
 				9623D88029B9AD1900BE0BFB /* SceneDelegate.swift in Sources */,
@@ -539,7 +539,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXMessagesTableViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -569,7 +569,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GXMessagesTableViewSample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -598,7 +598,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -618,7 +618,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
@@ -637,7 +637,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gin.GXMessagesTableViewSampleUITests;
@@ -655,7 +655,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G8M2K7562P;
+				DEVELOPMENT_TEAM = L54KZN9KMH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gin.GXMessagesTableViewSampleUITests;
