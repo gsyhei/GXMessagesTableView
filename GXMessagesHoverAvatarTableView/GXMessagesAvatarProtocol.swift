@@ -8,14 +8,14 @@
 import UIKit
 
 /// 头像cell接口
-public typealias GXMessagesAvatarCellProtocol = GXMessagesAvatarCell & GXMessagesAvatarViewProtocol
+public typealias GXMessagesAvatarCellProtocol = UITableViewCell & GXMessagesAvatarViewProtocol
 
 /// 头像视图接口
 public protocol GXMessagesAvatarViewProtocol {
     /// 悬浮头像视图
-    var avatar: UIView { get }
+    var gx_avatar: UIView { get }
     /// 悬浮头像视图创建方法
-    func createAvatarView() -> UIView
+    func gx_createAvatarView() -> UIView
 }
 
 /// 头像数据接口

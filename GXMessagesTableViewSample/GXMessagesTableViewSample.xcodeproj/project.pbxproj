@@ -20,7 +20,6 @@
 		9623D8B729B9AE5400BE0BFB /* GXMessagesTestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9623D8B629B9AE5400BE0BFB /* GXMessagesTestCell.swift */; };
 		9680F0C42A5BBE8800921AA1 /* GXMessagesLoadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680F0BF2A5BBE8700921AA1 /* GXMessagesLoadHeader.swift */; };
 		9680F0C52A5BBE8800921AA1 /* GXMessagesAvatarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680F0C02A5BBE8700921AA1 /* GXMessagesAvatarProtocol.swift */; };
-		9680F0C62A5BBE8800921AA1 /* GXMessagesAvatarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680F0C12A5BBE8700921AA1 /* GXMessagesAvatarCell.swift */; };
 		9680F0C72A5BBE8800921AA1 /* GXMessagesLoadTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680F0C22A5BBE8700921AA1 /* GXMessagesLoadTableView.swift */; };
 		9680F0C82A5BBE8800921AA1 /* GXMessagesHoverAvatarTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9680F0C32A5BBE8700921AA1 /* GXMessagesHoverAvatarTableView.swift */; };
 /* End PBXBuildFile section */
@@ -62,7 +61,6 @@
 		9623D8B629B9AE5400BE0BFB /* GXMessagesTestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesTestCell.swift; sourceTree = SOURCE_ROOT; };
 		9680F0BF2A5BBE8700921AA1 /* GXMessagesLoadHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadHeader.swift; sourceTree = "<group>"; };
 		9680F0C02A5BBE8700921AA1 /* GXMessagesAvatarProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesAvatarProtocol.swift; sourceTree = "<group>"; };
-		9680F0C12A5BBE8700921AA1 /* GXMessagesAvatarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesAvatarCell.swift; sourceTree = "<group>"; };
 		9680F0C22A5BBE8700921AA1 /* GXMessagesLoadTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesLoadTableView.swift; sourceTree = "<group>"; };
 		9680F0C32A5BBE8700921AA1 /* GXMessagesHoverAvatarTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GXMessagesHoverAvatarTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				9680F0C02A5BBE8700921AA1 /* GXMessagesAvatarProtocol.swift */,
-				9680F0C12A5BBE8700921AA1 /* GXMessagesAvatarCell.swift */,
 				9680F0BF2A5BBE8700921AA1 /* GXMessagesLoadHeader.swift */,
 				9680F0C22A5BBE8700921AA1 /* GXMessagesLoadTableView.swift */,
 				9680F0C32A5BBE8700921AA1 /* GXMessagesHoverAvatarTableView.swift */,
@@ -356,7 +353,6 @@
 				9623D88229B9AD1900BE0BFB /* ViewController.swift in Sources */,
 				9623D8B729B9AE5400BE0BFB /* GXMessagesTestCell.swift in Sources */,
 				9680F0C72A5BBE8800921AA1 /* GXMessagesLoadTableView.swift in Sources */,
-				9680F0C62A5BBE8800921AA1 /* GXMessagesAvatarCell.swift in Sources */,
 				9623D87E29B9AD1900BE0BFB /* AppDelegate.swift in Sources */,
 				9680F0C82A5BBE8800921AA1 /* GXMessagesHoverAvatarTableView.swift in Sources */,
 				9680F0C52A5BBE8800921AA1 /* GXMessagesAvatarProtocol.swift in Sources */,

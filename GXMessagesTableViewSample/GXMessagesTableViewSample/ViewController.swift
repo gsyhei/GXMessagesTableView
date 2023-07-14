@@ -85,7 +85,21 @@ class ViewController: UIViewController {
         
         self.updateDatas()
         self.tableView.reloadData()
+        let right = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(self.editItemTapped))
+        self.navigationItem.rightBarButtonItem = right
     }
+    
+    @objc func editItemTapped() {
+        if self.tableView.isEditing {
+            self.tableView.setEditing(false, animated: true)
+            self.navigationItem.rightBarButtonItem?.title = "Edit"
+        }
+        else {
+            self.tableView.setEditing(true, animated: true)
+            self.navigationItem.rightBarButtonItem?.title = "Cancel"
+        }
+    }
+    
     
     public func updateDatas() {
         var array: [TestData] = []
@@ -170,6 +184,10 @@ extension  ViewController: UITableViewDataSource, UITableViewDelegate, GXMessage
         header?.textLabel?.text = "Section: \(section)"
         
         return header
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
