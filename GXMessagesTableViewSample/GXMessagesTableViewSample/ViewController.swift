@@ -65,6 +65,7 @@ class ViewController: UIViewController {
         tv.datalist = self
         tv.backgroundColor = .white
         tv.rowHeight = 100.0
+        tv.allowsMultipleSelectionDuringEditing = true
         
         return tv
     }()
@@ -92,6 +93,7 @@ class ViewController: UIViewController {
     @objc func editItemTapped() {
         if self.tableView.isEditing {
             self.tableView.setEditing(false, animated: true)
+            self.tableView.deselectAll(animated: <#T##Bool#>)
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
         else {
