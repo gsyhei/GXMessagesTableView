@@ -8,18 +8,28 @@
 import UIKit
 
 open class GXMessagesAvatarCell: UITableViewCell {
-    open var gx_editControl: UIView?
-    open lazy var gx_checkmarkView: UIImageView = {
+    
+    open lazy var gx_checkmarkIcon: UIImageView = {
         let imageView = UIImageView(image: self.gx_checkmarkImage(false), highlightedImage: self.gx_checkmarkImage(true))
-        imageView.frame = CGRect(x: -100, y: 0, width: 30, height: 30)
+        let left = (GXMessagesHoverAvatarTableView.GXEditViewWidth - 30)/2
+        imageView.frame = CGRect(x: left, y: 0, width: 30, height: 30)
         
         return imageView
+    }()
+    open lazy var gx_checkmarkView: UIView = {
+        let view = UIView()
+        view.frame = CGRect(x: -GXMessagesHoverAvatarTableView.GXEditViewWidth, y: 0, width: GXMessagesHoverAvatarTableView.GXEditViewWidth, height: 30)
+        view.addSubview(self.gx_checkmarkIcon)
+        
+        return view
     }()
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         self.selectionStyle = .none
         self.contentView.addSubview(self.gx_checkmarkView)
+        NotificationCenter.default.addObserver(self, selector: #selector(gx_editNotification), name: GXMessagesHoverAvatarTableView.GXEditNotification, object: nil)
     }
     
     public required init?(coder: NSCoder) {
@@ -29,33 +39,57 @@ open class GXMessagesAvatarCell: UITableViewCell {
     open override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        self.gx_checkmarkView.isHighlighted = selected
+        self.gx_checkmarkIcon.isHighlighted = selected
     }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
-
-        let editControlWidth = self.contentView.left
-        var rect = self.gx_checkmarkView.frame
-        if (editControlWidth == 0) {
-            rect.origin.x = -(rect.width + 10.0)
-        } else {
-            rect.origin.x = -(rect.width + editControlWidth)/2
+        
+        self.gx_checkmarkView.centerY = self.contentView.centerY
+    }
+        
+    open func gx_setEditing(_ editing: Bool, animated: Bool) {
+        if editing {
+            self.contentView.addSubview(self.gx_checkmarkView)
+            var checkmarkViewFrame = self.gx_checkmarkView.frame
+            checkmarkViewFrame.origin.x = 0
+            if animated {
+                UIView.animate(withDuration: GXMessagesHoverAvatarTableView.GXEditAnimateDuration) {
+                    self.gx_checkmarkView.frame = checkmarkViewFrame
+                }
+            }
+            else {
+                self.gx_checkmarkView.frame = checkmarkViewFrame
+            }
         }
-        rect.origin.y = (self.contentView.height - rect.height) / 2
-        self.gx_checkmarkView.frame = rect
+        else {
+            var checkmarkViewFrame = self.gx_checkmarkView.frame
+            checkmarkViewFrame.origin.x = -GXMessagesHoverAvatarTableView.GXEditViewWidth
+            if animated {
+                UIView.animate(withDuration: GXMessagesHoverAvatarTableView.GXEditAnimateDuration) {
+                    self.gx_checkmarkView.frame = checkmarkViewFrame
+                } completion: { finished in
+                    self.gx_checkmarkView.removeFromSuperview()
+                }
+            }
+            else {
+                self.gx_checkmarkView.frame = checkmarkViewFrame
+                self.gx_checkmarkView.removeFromSuperview()
+            }
+        }
     }
     
-    open override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        if editing {
-            self.gx_editControl = self.gx_editControlView()
-            self.gx_editControl?.isHidden = true
-        }
-    }
 }
 
 private extension GXMessagesAvatarCell {
+    
+    @objc private func gx_editNotification(notification: NSNotification) {
+        if let object = notification.object as? [String: Bool] {
+            let editing = object[GXMessagesHoverAvatarTableView.GXEditIsEditingKey] ?? false
+            let animated = object[GXMessagesHoverAvatarTableView.GXEditIsAnimatedKey] ?? false
+            self.gx_setEditing(editing, animated: animated)
+        }
+    }
     
     func gx_checkmarkImage(_ checked: Bool) -> UIImage? {
         if checked {
@@ -64,16 +98,6 @@ private extension GXMessagesAvatarCell {
         else {
             return UIImage(systemName: "circle")
         }
-    }
-    
-    func gx_editControlView() -> UIView? {
-        guard let editClass = NSClassFromString("UITableViewCellEditControl") else { return nil }
-        for subview in self.subviews {
-            if subview.isMember(of: editClass) {
-                return subview
-            }
-        }
-        return nil
     }
     
 }

@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         tv.datalist = self
         tv.backgroundColor = .white
         tv.rowHeight = 100.0
-        tv.allowsMultipleSelectionDuringEditing = true
+        tv.allowsMultipleSelection = true
         
         return tv
     }()
@@ -91,13 +91,13 @@ class ViewController: UIViewController {
     }
     
     @objc func editItemTapped() {
-        if self.tableView.isEditing {
-            self.tableView.setEditing(false, animated: true)
-            self.tableView.deselectAll(animated: <#T##Bool#>)
+        if self.tableView.gx_isEditing {
+            self.tableView.gx_setEditing(false, animated: true)
+            self.tableView.deselectAll(animated: false)
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
         else {
-            self.tableView.setEditing(true, animated: true)
+            self.tableView.gx_setEditing(true, animated: true)
             self.navigationItem.rightBarButtonItem?.title = "Cancel"
         }
     }
