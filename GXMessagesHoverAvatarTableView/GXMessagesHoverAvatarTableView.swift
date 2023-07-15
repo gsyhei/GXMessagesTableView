@@ -77,13 +77,17 @@ public class GXMessagesHoverAvatarTableView: GXMessagesLoadTableView {
     
     public func gx_setEditing(_ editing: Bool, animated: Bool) {
         self.gx_isEditing = editing
-        let notificationObject = [GXMessagesHoverAvatarTableView.GXEditIsEditingKey: editing, GXMessagesHoverAvatarTableView.GXEditIsAnimatedKey: animated]
-        NotificationCenter.default.post(name: GXMessagesHoverAvatarTableView.GXEditNotification, object: notificationObject)
-        if !editing && self.indexPathsForSelectedRows?.count ?? 0 > 0 {
+        if !editing && (self.indexPathsForSelectedRows?.count ?? 0) > 0 {
             DispatchQueue.main.asyncAfter(deadline: .now()+GXMessagesHoverAvatarTableView.GXEditAnimateDuration) {
+                self.allowsMultipleSelection = editing
                 self.deselectAll(animated: false)
             }
+        } else {
+            self.allowsMultipleSelection = editing
+            self.deselectAll(animated: false)
         }
+        let notificationObject = [GXMessagesHoverAvatarTableView.GXEditIsEditingKey: editing, GXMessagesHoverAvatarTableView.GXEditIsAnimatedKey: animated]
+        NotificationCenter.default.post(name: GXMessagesHoverAvatarTableView.GXEditNotification, object: notificationObject)
         self.gx_editingAnimated = animated
         self.gx_changeContentOffset(self.contentOffset)
         self.gx_editingAnimated = false

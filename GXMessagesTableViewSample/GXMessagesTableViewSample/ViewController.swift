@@ -93,7 +93,6 @@ class ViewController: UIViewController {
     @objc func editItemTapped() {
         if self.tableView.gx_isEditing {
             self.tableView.gx_setEditing(false, animated: true)
-            self.tableView.deselectAll(animated: false)
             self.navigationItem.rightBarButtonItem?.title = "Edit"
         }
         else {
@@ -193,7 +192,7 @@ extension  ViewController: UITableViewDataSource, UITableViewDelegate, GXMessage
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        NSLog("didSelectRowAt: selectedCount = \(tableView.indexPathsForSelectedRows?.count ?? 0)")
     }
     
 }
