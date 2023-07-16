@@ -62,7 +62,7 @@ public class GXMessagesHoverAvatarTableView: GXMessagesLoadTableView {
     public override func dequeueReusableCell(withIdentifier identifier: String) -> UITableViewCell? {
         let cell = super.dequeueReusableCell(withIdentifier: identifier)
         if let avatarCell = cell as? GXMessagesAvatarCellProtocol {
-            avatarCell.gx_setEditing(self.gx_isEditing, animated: false)
+            avatarCell.gx_isEditing = self.gx_isEditing
         }
         return cell
     }
@@ -70,7 +70,7 @@ public class GXMessagesHoverAvatarTableView: GXMessagesLoadTableView {
     public override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
         let cell = super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         if let avatarCell = cell as? GXMessagesAvatarCellProtocol {
-            avatarCell.gx_setEditing(self.gx_isEditing, animated: false)
+            avatarCell.gx_isEditing = self.gx_isEditing
         }
         return cell
     }

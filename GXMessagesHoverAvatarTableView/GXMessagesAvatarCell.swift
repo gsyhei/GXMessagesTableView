@@ -8,7 +8,8 @@
 import UIKit
 
 open class GXMessagesAvatarCell: UITableViewCell {
-    
+    open var gx_isEditing: Bool = false
+
     open lazy var gx_checkmarkIcon: UIImageView = {
         let imageView = UIImageView(image: self.gx_checkmarkImage(false), highlightedImage: self.gx_checkmarkImage(true))
         let left = (GXMessagesHoverAvatarTableView.GXEditViewWidth - 30)/2
@@ -49,6 +50,7 @@ open class GXMessagesAvatarCell: UITableViewCell {
     }
         
     open func gx_setEditing(_ editing: Bool, animated: Bool) {
+        self.gx_isEditing = editing
         if editing {
             self.contentView.addSubview(self.gx_checkmarkView)
             var checkmarkViewFrame = self.gx_checkmarkView.frame
